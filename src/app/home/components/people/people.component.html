@@ -1,0 +1,16 @@
+<div class="people-container" *ngIf="isLoading$ | async else loading">
+  <div *ngFor="let user of users" (mouseover)="stop()" (mouseleave)="start()">
+    <img [src]="user.picture.large" [alt]="user.email">
+    <div class="name-container">
+      <div class="name-title">Hi, My name is</div>
+      <div class="name-content">{{user.name | userName}}</div>
+      <div class="new-btn" (click)="getNewUser()"><span>New</span></div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+   <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
